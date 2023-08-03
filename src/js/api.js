@@ -1,9 +1,9 @@
 
 import axios from 'axios';
+import { page } from "../index"
 
 
-
-export async function fetchInPixabayApi(searchQuery, page) {
+export async function fetchInPixabayApi(searchQuery) {
     const BASE_URL = "https://pixabay.com/api/";
 
     const options = {
@@ -14,7 +14,7 @@ export async function fetchInPixabayApi(searchQuery, page) {
             orientation: "horizontal",
             safesearch: true,
             per_page: 40,
-            page,
+            page: page,
         },
     };
      try {
