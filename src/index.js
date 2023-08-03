@@ -60,9 +60,9 @@ async function onLoadMoreBtnClick() {
       page += 1;
      
       const response = await fetchInPixabayApi(params);
-      clear();
+      const totalPages = page * perPage;
      
-        if (response.hits.length < 1) {
+        if (response.totalHits <= totalPages) {
          hideBtn();
          return   Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
