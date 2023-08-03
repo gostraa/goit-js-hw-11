@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { page } from "../index"
+import { page,perPage } from "../index"
 
 
 export async function fetchInPixabayApi(searchQuery) {
@@ -13,7 +13,7 @@ export async function fetchInPixabayApi(searchQuery) {
             image_type: "photo",
             orientation: "horizontal",
             safesearch: true,
-            per_page: 40,
+            per_page: perPage,
             page: page,
         },
     };

@@ -9,6 +9,7 @@ const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
 let params
+export let perPage = 40;
 export let page = 1;
 
 
