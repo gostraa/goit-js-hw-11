@@ -28,9 +28,9 @@
 
 
 .search-btn,.load-more{
-    width: 100px;
-    height: 35px;
-    border-radius: 10px;
+  
+    height: 45px;
+    border-radius: 50%;
     cursor: pointer;
     background-color:bisque;
 }
@@ -38,6 +38,7 @@
 
 .search-btn{
   font-size: 23px;
+
   
 }
 
