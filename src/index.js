@@ -4,13 +4,13 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { fetchInPixabayApi } from "./js/api";
 
+export let perPage = 40;
+export let page = 1;
 
 const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
 let params
-export let perPage = 40;
-export let page = 1;
 
 
 
@@ -28,7 +28,7 @@ async function onSearch(e) {
     try {
       clear();
       const response = await fetchInPixabayApi(searchQuery);
-      console.log(response);
+     
        
         if (!input.value.trim()) {
          hideBtn();
@@ -66,7 +66,7 @@ async function onLoadMoreBtnClick() {
         if (response.totalHits <= totalPages) {
          hideBtn();
          return   Notiflix.Notify.failure(
-          'Sorry, there are no images matching your search query. Please try again.'
+          "We're sorry, but you've reached the end of search results."
         );
         };
         
