@@ -21,24 +21,32 @@ loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
 
 
 async function onSearch(e) {
-    e.preventDefault();
-    const input = e.currentTarget.elements.searchQuery;
-    params = input.value.trim()
-    const searchQuery = input.value;
-    try {
-      clear();
-      const response = await fetchInPixabayApi(searchQuery);
-     
-       
-        if (!input.value.trim()) {
+  e.preventDefault();
+  const input = e.currentTarget.elements.searchQuery;
+  params = input.value.trim();
+  
+  const searchQuery = input.value;
+  
+   if (!input.value.trim()) {
          hideBtn();
           return  Notiflix.Notify.failure(
                 'Sorry, there are no images matching your search query. Please try again.');
         
         };
+  try {
+      hideBtn();
+      clear();
+      page = 1;
+      const response = await fetchInPixabayApi(searchQuery);
      
-  
         if (response.hits.length < 1) {
+         hideBtn();
+         return   Notiflix.Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+      };
+      
+      if (response.total < perPage) {
          hideBtn();
          return   Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
@@ -64,7 +72,8 @@ async function onLoadMoreBtnClick() {
       const totalPages = page * perPage;
      
         if (response.totalHits <= totalPages) {
-         hideBtn();
+          hideBtn();
+          page = 1;
          return   Notiflix.Notify.failure(
           "We're sorry, but you've reached the end of search results."
         );
