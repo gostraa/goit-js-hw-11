@@ -44,17 +44,16 @@ async function onSearch(e) {
          return   Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
-      };
+    };
+    
+    createMarkup(response);
+    showBtn();
       
       if (response.total < perPage) {
          hideBtn();
-         return   Notiflix.Notify.failure(
-          'Sorry, there are no images matching your search query. Please try again.'
-        );
-        };
         
-      createMarkup(response);
-      showBtn();
+    };
+      
       
     } catch (error) {
       console.error('Error:', error);
